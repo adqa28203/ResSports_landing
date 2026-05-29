@@ -1,7 +1,8 @@
 const http = require('http');
 const fs = require('fs'); // Thư viện đọc file hệ thống
 const path = require('path');
-const PORT = 5000;
+// Thay vì viết const PORT = 5000; bạn đổi thành:
+const PORT = process.env.PORT || 5000;
 
 const server = http.createServer((req, res) => {
     // Đọc file landing.html để trả về cho người dùng
