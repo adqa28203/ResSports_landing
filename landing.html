@@ -360,40 +360,97 @@
         footer b {
             color: white;
         }
-        /* --- CẤU HÌNH TRƯỢT NGANG CHO SPORTS GRID --- */
+        /* --- CẤU HÌNH TRƯỢT NGANG CÓ THANH KÉO CAO CẤP --- */
         .sports-container {
             position: relative;
             width: 100%;
-            overflow-x: auto; /* Kích hoạt cuộn ngang */
+            overflow-x: auto; /* Bật cuộn ngang */
             scroll-behavior: smooth;
-            padding-bottom: 20px;
-            /* Ẩn thanh cuộn xấu xí trên các trình duyệt */
-            -ms-overflow-style: none;  /* IE and Edge */
-            scrollbar-width: none;  /* Firefox */
+            padding-bottom: 25px; /* Tạo khoảng trống để hiện thanh kéo bên dưới */
+            cursor: grab; /* Thay đổi con trỏ chuột thành hình bàn tay để báo hiệu kéo được */
         }
         
+        /* Khi người dùng đang nhấn giữ chuột để kéo */
+        .sports-container:active {
+            cursor: grabbing;
+        }
+        
+        /* Cấu hình hình dáng thanh kéo (Scrollbar) */
         .sports-container::-webkit-scrollbar {
-            display: none; /* Chrome, Safari and Opera */
+            height: 8px; /* Độ dày của thanh kéo ngang */
+            display: block; /* Hiện thanh kéo lên */
+        }
+
+        /* Cấu hình phần nền của thanh kéo */
+        .sports-container::-webkit-scrollbar-track {
+            background: #f1f2f6; 
+            border-radius: 10px;
+        }
+        
+        /* Cấu hình cục trượt của thanh kéo */
+        .sports-container::-webkit-scrollbar-thumb {
+            background: linear-gradient(135deg, var(--primary-color), #ff6b81);
+            border-radius: 10px;
+            transition: 0.3s;
+        }
+
+        /* Hiệu ứng khi di chuột vào cục trượt */
+        .sports-container::-webkit-scrollbar-thumb:hover {
+            background: #e22f40;
         }
 
         .sports-grid {
-            display: flex; /* Chuyển từ Grid sang Flexbox để xếp 1 hàng */
+            display: flex;
             gap: 25px;
             padding: 10px 5px;
-            width: max-content; /* Đảm bảo hàng luôn rộng bằng tổng các thẻ con */
+            width: max-content;
+            user-select: none; /* Ngăn chặn việc bôi đen chữ khi đang kéo chuột */
         }
 
         .sport-card {
-            flex: 0 0 280px; /* Cố định độ rộng mỗi thẻ sân là 280px, không cho co bóp */
-            height: 380px;   /* Tăng chiều cao lên một chút cho đẹp */
+            flex: 0 0 280px;
+            height: 380px;
             position: relative;
             border-radius: 24px;
             overflow: hidden;
-            cursor: pointer;
             box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+        }
+        
+        /* Ngăn ảnh bị kéo lệch tâm khi drag chuột */
+        .sport-card img {
+            pointer-events: none;
         }
     </style>
 </head>
+    <!-- ĐOẠN MÃ KÍCH HOẠT TÍNH NĂNG KÉO CHUỘT TRỰC TIẾP -->
+    <script>
+        const slider = document.querySelector('.sports-container');
+        let isDown = false;
+        let startX;
+        let scrollLeft;
+
+        slider.addEventListener('mousedown', (e) => {
+            isDown = true;
+            startX = e.pageX - slider.offsetLeft;
+            scrollLeft = slider.scrollLeft;
+        });
+
+        slider.addEventListener('mouseleave', () => {
+            isDown = false;
+        });
+
+        slider.addEventListener('mouseup', () => {
+            isDown = false;
+        });
+
+        slider.addEventListener('mousemove', (e) => {
+            if(!isDown) return;
+            e.preventDefault();
+            const x = e.pageX - slider.offsetLeft;
+            const walk = (x - startX) * 2; // Nhân 2 để tăng độ nhạy khi kéo
+            slider.scrollLeft = scrollLeft - walk;
+        });
+    </script>
 <body>
 
     <header>
