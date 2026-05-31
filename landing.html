@@ -3,276 +3,472 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SportBooking - Nền Tảng Đặt Sân Thể Thao Hàng Đầu</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <title>SportRes - Hệ Thống Đặt Sân Thể Thao Tự Động Toàn Quốc</title>
+    <link href="https://fonts.googleapis.com/css2?family=Mulish:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
     <style>
-        /* Toàn bộ cấu trúc CSS làm đẹp giao diện */
+        /* --- CẤU HÌNH GIAO DIỆN THEO PHONG CÁCH SALEKIT PREMIUM --- */
+        :root {
+            --primary-color: #ff4757; /* Màu đỏ cam rực rỡ chủ đạo */
+            --secondary-color: #2ed573; /* Màu xanh lá thể thao điểm xuyết */
+            --dark-color: #1e272e;
+            --light-bg: #f1f2f6;
+            --text-color: #2f3542;
+        }
+
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Poppins', sans-serif;
+            font-family: 'Mulish', sans-serif;
         }
 
         body {
-            color: #333;
+            color: var(--text-color);
             line-height: 1.6;
-            background-color: #f9f9f9;
+            background-color: #fff;
         }
 
-        /* 1. THANH MENU (NAVBAR) */
+        /* 1. NAVIGATION BAR */
         header {
-            background: #fff;
-            padding: 20px 10%;
+            background: rgba(255, 255, 255, 0.95);
+            padding: 15px 8%;
             display: flex;
             justify-content: space-between;
             align-items: center;
             position: sticky;
             top: 0;
             z-index: 1000;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            backdrop-filter: blur(5px);
         }
 
         .logo {
-            font-size: 24px;
-            font-weight: 700;
-            color: #2ecc71;
+            font-size: 26px;
+            font-weight: 800;
+            color: var(--dark-color);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .logo span {
+            color: var(--primary-color);
         }
 
         .nav-links {
             list-style: none;
             display: flex;
-            gap: 20px;
+            align-items: center;
+            gap: 30px;
         }
 
         .nav-links a {
             text-decoration: none;
-            color: #555;
-            font-weight: 600;
+            color: #57606f;
+            font-weight: 700;
+            font-size: 15px;
             transition: 0.3s;
         }
 
         .nav-links a:hover {
-            color: #2ecc71;
+            color: var(--primary-color);
         }
 
         .btn-login {
-            background: #2ecc71;
+            background: linear-gradient(135deg, var(--primary-color), #ff6b81);
             color: white !important;
-            padding: 8px 20px;
-            border-radius: 5px;
+            padding: 10px 25px;
+            border-radius: 50px;
+            box-shadow: 0 5px 15px rgba(255, 71, 87, 0.3);
         }
 
-        /* 2. BANNER CHÍNH (HERO SECTION) */
+        /* 2. HERO SECTION - BANNER ĐẬM CHẤT CHUYỂN ĐỔI */
         .hero {
-            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), 
-                        url('https://images.unsplash.com/photo-1508098682722-e99c43a406b2?fm=jpg&q=60&w=3000') no-repeat center center/cover;
-            height: 80vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
+            position: relative;
+            padding: 100px 8% 80px 8%;
+            background: linear-gradient(135deg, #1e272e 0%, #0a0f12 100%);
             color: white;
-            padding: 0 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            overflow: hidden;
+            min-height: 85vh;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -20%;
+            right: -10%;
+            width: 600px;
+            height: 600px;
+            background: rgba(255, 71, 87, 0.15);
+            border-radius: 50%;
+            filter: blur(80px);
+        }
+
+        .hero-content {
+            max-width: 550px;
+            z-index: 2;
+        }
+
+        .hero-badge {
+            background: rgba(255, 71, 87, 0.2);
+            color: #ff6b81;
+            padding: 6px 15px;
+            border-radius: 50px;
+            font-size: 13px;
+            font-weight: 700;
+            display: inline-block;
+            margin-bottom: 20px;
+            border: 1px solid rgba(255, 71, 87, 0.3);
         }
 
         .hero h1 {
-            font-size: 48px;
+            font-size: 46px;
+            line-height: 1.2;
             margin-bottom: 20px;
-            font-weight: 700;
+            font-weight: 800;
+        }
+
+        .hero h1 span {
+            color: var(--primary-color);
         }
 
         .hero p {
-            font-size: 20px;
-            margin-bottom: 30px;
-            max-width: 600px;
+            font-size: 16px;
+            color: #a4b0be;
+            margin-bottom: 35px;
         }
 
-        .cta-btn {
-            background: #2ecc71;
+        .hero-buttons {
+            display: flex;
+            gap: 15px;
+        }
+
+        .btn-main {
+            background: linear-gradient(135deg, var(--primary-color), #ff6b81);
             color: white;
-            padding: 15px 35px;
+            padding: 16px 35px;
             text-decoration: none;
-            font-size: 18px;
-            font-weight: 600;
-            border-radius: 30px;
-            box-shadow: 0 4px 15px rgba(46, 204, 113, 0.4);
+            font-size: 16px;
+            font-weight: 700;
+            border-radius: 50px;
+            box-shadow: 0 8px 25px rgba(255, 71, 87, 0.4);
             transition: 0.3s;
         }
 
-        .cta-btn:hover {
-            background: #27ae60;
+        .btn-main:hover {
             transform: translateY(-3px);
+            box-shadow: 0 12px 30px rgba(255, 71, 87, 0.6);
         }
 
-        /* 3. KHU VỰC TÍNH NĂNG (FEATURES) */
-        .container {
-            max-width: 1200px;
-            margin: 80px auto;
-            padding: 0 20px;
+        .btn-sub {
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            padding: 16px 35px;
+            text-decoration: none;
+            font-size: 16px;
+            font-weight: 700;
+            border-radius: 50px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: 0.3s;
+        }
+
+        .btn-sub:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        .hero-image {
+            position: relative;
+            z-index: 2;
+            width: 500px;
+            height: 400px;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+            border: 4px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .hero-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* 3. SECTION CHUNG */
+        .section {
+            padding: 90px 8%;
             text-align: center;
         }
 
-        .section-title {
-            font-size: 32px;
-            margin-bottom: 50px;
-            position: relative;
+        .section-tag {
+            color: var(--primary-color);
+            font-size: 14px;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 10px;
+            display: block;
         }
 
-        .section-title::after {
-            content: '';
-            width: 60px;
-            height: 4px;
-            background: #2ecc71;
-            position: absolute;
-            bottom: -10px;
-            left: 50%;
-            transform: translateX(-50%);
+        .section-title {
+            font-size: 34px;
+            font-weight: 800;
+            margin-bottom: 50px;
+            color: var(--dark-color);
+        }
+
+        /* 4. KHU VỰC TÍNH NĂNG (FEATURES BO TRÒN HIỆN ĐẠI) */
+        .bg-light {
+            background-color: var(--light-bg);
         }
 
         .features-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 30px;
         }
 
         .feature-card {
             background: white;
-            padding: 40px 30px;
-            border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-            transition: 0.3s;
+            padding: 45px 30px;
+            border-radius: 24px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.03);
+            transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            text-align: left;
+            border: 1px solid rgba(0,0,0,0.02);
         }
 
         .feature-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(255, 71, 87, 0.1);
         }
 
-        .feature-card icon {
-            font-size: 40px;
-            display: block;
-            margin-bottom: 20px;
+        .icon-box {
+            width: 65px;
+            height: 65px;
+            background: rgba(255, 71, 87, 0.1);
+            color: var(--primary-color);
+            border-radius: 18px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 26px;
+            margin-bottom: 25px;
         }
 
         .feature-card h3 {
+            font-size: 20px;
+            font-weight: 700;
             margin-bottom: 15px;
-            font-size: 22px;
+            color: var(--dark-color);
         }
 
-        /* 4. KHU VỰC BỘ MÔN THỂ THAO */
+        .feature-card p {
+            color: #747d8c;
+            font-size: 14px;
+        }
+
+        /* 5. KHU VỰC CHỌN SÂN (SPORTS) */
         .sports-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 20px;
-            margin-top: 20px;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 25px;
         }
 
-        .sport-item {
+        .sport-card {
             position: relative;
-            border-radius: 8px;
+            height: 350px;
+            border-radius: 24px;
             overflow: hidden;
-            height: 150px;
             cursor: pointer;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.05);
         }
 
-        .sport-item img {
+        .sport-card img {
             width: 100%;
             height: 100%;
             object-fit: cover;
-            transition: 0.5s;
+            transition: 0.6s ease;
         }
 
-        .sport-item:hover img {
-            transform: scale(1.1);
+        .sport-card:hover img {
+            transform: scale(1.1) rotate(1deg);
         }
 
-        .sport-name {
+        .sport-overlay {
             position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            background: linear-gradient(transparent, rgba(0,0,0,0.8));
-            color: white;
-            padding: 15px;
+            inset: 0;
+            background: linear-gradient(to top, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.2) 60%, transparent 100%);
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            padding: 30px;
             text-align: left;
+        }
+
+        .sport-overlay h3 {
+            color: white;
+            font-size: 22px;
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+
+        .sport-overlay p {
+            color: var(--primary-color);
+            font-size: 14px;
+            font-weight: 700;
+        }
+
+        /* 6. THỐNG KÊ ẤN TƯỢNG (NUMBERS) */
+        .stats-section {
+            background: var(--dark-color);
+            color: white;
+            padding: 60px 8%;
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            gap: 30px;
+        }
+
+        .stat-item h2 {
+            font-size: 42px;
+            color: var(--primary-color);
+            font-weight: 800;
+            margin-bottom: 5px;
+        }
+
+        .stat-item p {
+            color: #a4b0be;
+            font-size: 14px;
             font-weight: 600;
         }
 
         /* FOOTER */
         footer {
-            background: #2c3e50;
-            color: white;
+            background: #0f1418;
+            color: #747d8c;
+            padding: 40px 8%;
             text-align: center;
-            padding: 30px;
             font-size: 14px;
+            border-top: 1px solid rgba(255,255,255,0.05);
+        }
+
+        footer b {
+            color: white;
         }
     </style>
 </head>
 <body>
 
     <header>
-        <div class="logo">⚽ SportBooking</div>
+        <div class="logo"><i class="fa-solid fa-trophy" style="color: var(--primary-color);"></i> Sport<span>Res</span></div>
         <ul class="nav-links">
             <li><a href="#">Trang chủ</a></li>
-            <li><a href="#">Dành cho Người chơi</a></li>
-            <li><a href="#">Dành cho Chủ sân</a></li>
-            <li><a href="#" class="btn-login">Đăng Nhập</a></li>
+            <li><a href="#">Tính năng</a></li>
+            <li><a href="#">Bảng giá</a></li>
+            <li><a href="#" class="btn-login"><i class="fa-solid fa-user-shield"></i> Đăng Nhập</a></li>
         </ul>
     </header>
 
     <section class="hero">
-        <h1>Đặt Sân Thể Thao Chưa Bao Giờ Dễ Đến Thế</h1>
-        <p>Tìm kiếm sân trống gần bạn, đặt lịch giữ chỗ chỉ trong 30 giây. Phục vụ bóng đá, cầu lông, tennis, bóng rổ...</p>
-        <a href="#" class="cta-btn">Đặt Sân Ngay Hôm Nay</a>
+        <div class="hero-content">
+            <span class="hero-badge"><i class="fa-solid fa-bolt"></i> Nền tảng tự động hóa số 1 Việt Nam</span>
+            <h1>Giải pháp quản lý và đặt sân <span>Toàn Diện</span></h1>
+            <p>SportRes giúp kết nối người chơi và chủ sân thể thao chỉ trong vài thao tác chạm. Tăng doanh thu tối đa cho doanh nghiệp, giữ chỗ nhanh chóng cho vận động viên.</p>
+            <div class="hero-buttons">
+                <a href="#" class="btn-main">Trải Nghiệm Ngay</a>
+                <a href="#" class="btn-sub">Xem Doanh Thu</a>
+            </div>
+        </div>
+        <div class="hero-image">
+            <img src="https://images.unsplash.com/photo-1508098682722-e99c43a406b2?fm=jpg&q=60&w=3000" alt="Giao diện SportRes">
+        </div>
     </section>
 
-    <section class="container">
-        <h2 class="section-title">Giải Pháp Toàn Diện</h2>
+    <section class="stats-section">
+        <div class="stat-item">
+            <h2>150,000+</h2>
+            <p>Người chơi tin dùng</p>
+        </div>
+        <div class="stat-item">
+            <h2>1,200+</h2>
+            <p>Sân đấu trên toàn quốc</p>
+        </div>
+        <div class="stat-item">
+            <h2>30 Giây</h2>
+            <p>Thời gian đặt giữ chỗ</p>
+        </div>
+        <div class="stat-section-item">
+            <h2>99.9%</h2>
+            <p>Tỷ lệ lịch chính xác</p>
+        </div>
+    </section>
+
+    <section class="section bg-light">
+        <span class="section-tag">Giá trị mang lại</span>
+        <h2 class="section-title">Tại sao nên chọn SportRes?</h2>
+        
         <div class="features-grid">
             <div class="feature-card">
-                <icon>🔍</icon>
-                <h3>Tìm kiếm thông minh</h3>
-                <p>Lọc sân theo vị trí gần bạn nhất, theo khung giờ trống, bộ môn yêu thích và bảng giá minh bạch.</p>
+                <div class="icon-box"><i class="fa-solid fa-magnifying-glass"></i></div>
+                <h3>Tìm sân siêu tốc</h3>
+                <p>Hệ thống tự động định vị vị trí của bạn để đề xuất các cụm sân bóng đá, cầu lông, tennis có khung giờ trống gần bạn nhất.</p>
             </div>
             <div class="feature-card">
-                <icon>⚡</icon>
-                <h3>Đặt sân siêu tốc</h3>
-                <p>Hệ thống tự động cập nhật lịch thực tế. Giữ chỗ tức thì, hỗ trợ nhiều hình thức thanh toán trực tuyến tiện lợi.</p>
+                <div class="icon-box" style="background: rgba(46, 213, 115, 0.1); color: var(--secondary-color);"><i class="fa-solid fa-credit-card"></i></div>
+                <h3>Thanh toán linh hoạt</h3>
+                <p>Tích hợp cổng quét mã QR ngân hàng tự động, ví điện tử MoMo, VNPAY. Xác nhận giữ chỗ ngay sau 3 giây quét mã thành công.</p>
             </div>
             <div class="feature-card">
-                <icon>📊</icon>
-                <h3>Quản lý doanh thu</h3>
-                <p>Công cụ dành riêng cho chủ sân để kiểm soát lịch đặt, phân lịch thi đấu tự động và báo cáo tài chính chính xác.</p>
+                <div class="icon-box" style="background: rgba(30, 144, 255, 0.1); color: #1e90ff;"><i class="fa-solid fa-chart-line"></i></div>
+                <h3>Quản lý doanh thu (Chủ sân)</h3>
+                <p>Biểu đồ báo cáo trực quan giúp chủ sân theo dõi tần suất kín lịch, quản lý nhân sự trực ca, chống trùng lịch tuyệt đối.</p>
             </div>
         </div>
     </section>
 
-    <section class="container" style="background: #fff; padding: 40px 20px; border-radius: 12px;">
-        <h2 class="section-title">Bộ Môn Hỗ Trợ</h2>
+    <section class="section">
+        <span class="section-tag">Đa dạng bộ môn</span>
+        <h2 class="section-title">Sẵn sàng phục vụ mọi đam mê</h2>
+        
         <div class="sports-grid">
-            <div class="sport-item">
+            <div class="sport-card">
                 <img src="https://images.unsplash.com/photo-1508098682722-e99c43a406b2?fm=jpg&q=60&w=800" alt="Bóng đá">
-                <div class="sport-name">Bóng Đá</div>
+                <div class="sport-overlay">
+                    <h3>Sân Bóng Đá</h3>
+                    <p>Hơn 500 cụm sân cỏ nhân tạo</p>
+                </div>
             </div>
-            <div class="sport-item">
+            <div class="sport-card">
                 <img src="https://images.unsplash.com/photo-1626224583764-f87db24ac4ea?fm=jpg&q=60&w=800" alt="Cầu lông">
-                <div class="sport-name">Cầu Lông</div>
+                <div class="sport-overlay">
+                    <h3>Sân Cầu Lông</h3>
+                    <p>Sân thảm chuẩn quốc tế</p>
+                </div>
             </div>
-            <div class="sport-item">
+            <div class="sport-card">
                 <img src="https://images.unsplash.com/photo-1595435934249-5df7ed86e1c0?fm=jpg&q=60&w=800" alt="Tennis">
-                <div class="sport-name">Tennis</div>
+                <div class="sport-overlay">
+                    <h3>Sân Tennis</h3>
+                    <p>Hỗ trợ đặt theo tháng/năm</p>
+                </div>
             </div>
-            <div class="sport-item">
+            <div class="sport-card">
                 <img src="https://images.unsplash.com/photo-1546519638-68e109498ffc?fm=jpg&q=60&w=800" alt="Bóng rổ">
-                <div class="sport-name">Bóng Rổ</div>
+                <div class="sport-overlay">
+                    <h3>Sân Bóng Rổ</h3>
+                    <p>Sân trong nhà & ngoài trời</p>
+                </div>
             </div>
         </div>
     </section>
 
     <footer>
-        <p>© 2026 SportBooking Dự án Hệ thống Đặt sân Thể thao thông minh. All rights reserved.</p>
+        <p>© 2026 <b>SportRes</b> - Nền tảng số hóa hạ tầng thể thao toàn diện. Phát triển bởi Salekit Style.</p>
     </footer>
 
 </body>
