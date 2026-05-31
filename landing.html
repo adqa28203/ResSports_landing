@@ -360,6 +360,38 @@
         footer b {
             color: white;
         }
+        /* --- CẤU HÌNH TRƯỢT NGANG CHO SPORTS GRID --- */
+        .sports-container {
+            position: relative;
+            width: 100%;
+            overflow-x: auto; /* Kích hoạt cuộn ngang */
+            scroll-behavior: smooth;
+            padding-bottom: 20px;
+            /* Ẩn thanh cuộn xấu xí trên các trình duyệt */
+            -ms-overflow-style: none;  /* IE and Edge */
+            scrollbar-width: none;  /* Firefox */
+        }
+        
+        .sports-container::-webkit-scrollbar {
+            display: none; /* Chrome, Safari and Opera */
+        }
+
+        .sports-grid {
+            display: flex; /* Chuyển từ Grid sang Flexbox để xếp 1 hàng */
+            gap: 25px;
+            padding: 10px 5px;
+            width: max-content; /* Đảm bảo hàng luôn rộng bằng tổng các thẻ con */
+        }
+
+        .sport-card {
+            flex: 0 0 280px; /* Cố định độ rộng mỗi thẻ sân là 280px, không cho co bóp */
+            height: 380px;   /* Tăng chiều cao lên một chút cho đẹp */
+            position: relative;
+            border-radius: 24px;
+            overflow: hidden;
+            cursor: pointer;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+        }
     </style>
 </head>
 <body>
