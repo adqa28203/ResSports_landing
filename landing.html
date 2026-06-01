@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <style>
-        /* --- CẤU HÌNH GIAO DIỆN THEO PHONG CÁCH SALEKIT PREMIUM --- */
+        /* --- CẤU HÌNH GIAO DIỆN THEO PHONG CÁCH PREMIUM --- */
         :root {
             --primary-color: #2ecc71; /* Màu xanh lá tươi thương hiệu SportRes */
             --primary-hover: #27ae60; /* Màu xanh lá đậm khi di chuột */
@@ -22,6 +22,11 @@
             padding: 0;
             box-sizing: border-box;
             font-family: 'Mulish', sans-serif;
+        }
+
+        /* Thêm cuộn mượt mà cho toàn bộ trang khi bấm link neo */
+        html {
+            scroll-behavior: smooth;
         }
 
         body {
@@ -77,20 +82,19 @@
         }
 
         .btn-login {
-            background: linear-gradient(135deg, var(--primary-color), #ff6b81);
+            background: linear-gradient(135deg, var(--primary-color), #55efc4);
             color: white !important;
             padding: 10px 25px;
             border-radius: 50px;
-            box-shadow: 0 5px 15px rgba(255, 71, 87, 0.3);
+            box-shadow: 0 5px 15px rgba(46, 204, 113, 0.3);
         }
 
-        /* 2. HERO SECTION - BANNER ĐẬM CHẤT CHUYỂN ĐỔI */
+        /* 2. HERO SECTION - BANNER ĐẬM CHẤT CHUYỂN ĐỔI CHUẨN XANH LÁ */
         .hero {
             position: relative;
             padding: 80px 8% 80px 8%;
-            /* Sử dụng dải màu Gradient Xanh lá cây thể thao từ đậm sang sáng nhẹ */
             background: linear-gradient(135deg, #1abc9c 0%, #2ecc71 100%);
-            color: #ffffff; /* Đổi toàn bộ chữ phần này sang màu trắng cho nổi bật */
+            color: #ffffff;
             display: flex;
             align-items: center;
             justify-content: space-between;
@@ -120,16 +124,16 @@
             line-height: 1.2;
             margin-bottom: 20px;
             font-weight: 800;
-            color: #ffffff; /* Tiêu đề màu trắng tinh tế */
+            color: #ffffff;
         }
 
         .hero h1 span {
-            color: #f1c40f; /* Đổi chữ "Toàn Diện" sang màu vàng rực rỡ để tạo điểm nhấn nhấn mạnh */
+            color: #f1c40f;
         }
 
         .hero p {
             font-size: 16px;
-            color: #e8f8f5; /* Màu chữ mô tả trắng xanh nhẹ, dễ đọc */
+            color: #e8f8f5;
             margin-bottom: 35px;
         }
 
@@ -139,8 +143,8 @@
         }
 
         .btn-main {
-            background: #ffffff; /* Đổi nút chính sang màu trắng để nổi bật trên nền xanh */
-            color: #27ae60; /* Chữ màu xanh lá đậm */
+            background: #ffffff;
+            color: #27ae60;
             padding: 16px 35px;
             text-decoration: none;
             font-size: 16px;
@@ -156,38 +160,25 @@
             box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
         }
 
-        .btn-sub {
-            background: rgba(255, 255, 255, 0.15);
-            color: #ffffff;
-            padding: 16px 35px;
-            text-decoration: none;
-            font-size: 16px;
-            font-weight: 700;
-            border-radius: 50px;
-            border: 1px solid rgba(255, 255, 255, 0.3);
-            transition: 0.3s;
-        }
-
-        .btn-sub:hover {
-            background: rgba(255, 255, 255, 0.3);
-            color: #ffffff;
-        }
-
         .hero-image {
             position: relative;
             z-index: 2;
-            width: 500px;
-            height: 400px;
-            border-radius: 20px;
+            width: 420px;
+            height: 420px;
+            border-radius: 30px;
             overflow: hidden;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.5);
-            border: 4px solid rgba(255, 255, 255, 0.1);
+            background: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
         }
 
         .hero-image img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
+            width: 85%;
+            height: 85%;
+            object-fit: contain;
         }
 
         /* 3. SECTION CHUNG */
@@ -213,7 +204,7 @@
             color: var(--dark-color);
         }
 
-        /* 4. KHU VỰC TÍNH NĂNG (FEATURES BO TRÒN HIỆN ĐẠI) */
+        /* 4. KHU VỰC TÍNH NĂNG */
         .bg-light {
             background-color: var(--light-bg);
         }
@@ -236,13 +227,13 @@
 
         .feature-card:hover {
             transform: translateY(-10px);
-            box-shadow: 0 20px 40px rgba(255, 71, 87, 0.1);
+            box-shadow: 0 20px 40px rgba(46, 204, 113, 0.15);
         }
 
         .icon-box {
             width: 65px;
             height: 65px;
-            background: rgba(255, 71, 87, 0.1);
+            background: rgba(46, 204, 113, 0.1);
             color: var(--primary-color);
             border-radius: 18px;
             display: flex;
@@ -264,23 +255,59 @@
             font-size: 14px;
         }
 
-        /* 5. KHU VỰC CHỌN SÂN (SPORTS) */
+        /* 5. CẤU HÌNH TRƯỢT NGANG CÓ THANH KÉO */
+        .sports-container {
+            position: relative;
+            width: 100%;
+            overflow-x: auto;
+            scroll-behavior: smooth;
+            padding-bottom: 25px;
+            cursor: grab;
+        }
+        
+        .sports-container:active {
+            cursor: grabbing;
+        }
+        
+        .sports-container::-webkit-scrollbar {
+            height: 8px;
+            display: block;
+        }
+
+        .sports-container::-webkit-scrollbar-track {
+            background: #f1f2f6; 
+            border-radius: 10px;
+        }
+        
+        .sports-container::-webkit-scrollbar-thumb {
+            background: linear-gradient(135deg, var(--primary-color), #55efc4);
+            border-radius: 10px;
+            transition: 0.3s;
+        }
+
+        .sports-container::-webkit-scrollbar-thumb:hover {
+            background: var(--primary-hover);
+        }
+
         .sports-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            display: flex;
             gap: 25px;
+            padding: 10px 5px;
+            width: max-content;
+            user-select: none;
         }
 
         .sport-card {
+            flex: 0 0 280px;
+            height: 380px;
             position: relative;
-            height: 350px;
             border-radius: 24px;
             overflow: hidden;
-            cursor: pointer;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.08);
         }
-
+        
         .sport-card img {
+            pointer-events: none;
             width: 100%;
             height: 100%;
             object-fit: cover;
@@ -315,7 +342,7 @@
             font-weight: 700;
         }
 
-        /* 6. THỐNG KÊ ẤN TƯỢNG (NUMBERS) */
+        /* 6. THỐNG KÊ */
         .stats-section {
             background: var(--dark-color);
             color: white;
@@ -352,106 +379,17 @@
         footer b {
             color: white;
         }
-        /* --- CẤU HÌNH TRƯỢT NGANG CÓ THANH KÉO CAO CẤP --- */
-        .sports-container {
-            position: relative;
-            width: 100%;
-            overflow-x: auto; /* Bật cuộn ngang */
-            scroll-behavior: smooth;
-            padding-bottom: 25px; /* Tạo khoảng trống để hiện thanh kéo bên dưới */
-            cursor: grab; /* Thay đổi con trỏ chuột thành hình bàn tay để báo hiệu kéo được */
-        }
-        
-        /* Khi người dùng đang nhấn giữ chuột để kéo */
-        .sports-container:active {
-            cursor: grabbing;
-        }
-        
-        /* Cấu hình hình dáng thanh kéo (Scrollbar) */
-        .sports-container::-webkit-scrollbar {
-            height: 8px; /* Độ dày của thanh kéo ngang */
-            display: block; /* Hiện thanh kéo lên */
-        }
-
-        /* Cấu hình phần nền của thanh kéo */
-        .sports-container::-webkit-scrollbar-track {
-            background: #f1f2f6; 
-            border-radius: 10px;
-        }
-        
-        /* Cấu hình cục trượt của thanh kéo */
-        .sports-container::-webkit-scrollbar-thumb {
-            background: linear-gradient(135deg, var(--primary-color), #ff6b81);
-            border-radius: 10px;
-            transition: 0.3s;
-        }
-
-        /* Hiệu ứng khi di chuột vào cục trượt */
-        .sports-container::-webkit-scrollbar-thumb:hover {
-            background: #e22f40;
-        }
-
-        .sports-grid {
-            display: flex;
-            gap: 25px;
-            padding: 10px 5px;
-            width: max-content;
-            user-select: none; /* Ngăn chặn việc bôi đen chữ khi đang kéo chuột */
-        }
-
-        .sport-card {
-            flex: 0 0 280px;
-            height: 380px;
-            position: relative;
-            border-radius: 24px;
-            overflow: hidden;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.08);
-        }
-        
-        /* Ngăn ảnh bị kéo lệch tâm khi drag chuột */
-        .sport-card img {
-            pointer-events: none;
-        }
     </style>
 </head>
-    <!-- ĐOẠN MÃ KÍCH HOẠT TÍNH NĂNG KÉO CHUỘT TRỰC TIẾP -->
-    <script>
-        const slider = document.querySelector('.sports-container');
-        let isDown = false;
-        let startX;
-        let scrollLeft;
-
-        slider.addEventListener('mousedown', (e) => {
-            isDown = true;
-            startX = e.pageX - slider.offsetLeft;
-            scrollLeft = slider.scrollLeft;
-        });
-
-        slider.addEventListener('mouseleave', () => {
-            isDown = false;
-        });
-
-        slider.addEventListener('mouseup', () => {
-            isDown = false;
-        });
-
-        slider.addEventListener('mousemove', (e) => {
-            if(!isDown) return;
-            e.preventDefault();
-            const x = e.pageX - slider.offsetLeft;
-            const walk = (x - startX) * 2; // Nhân 2 để tăng độ nhạy khi kéo
-            slider.scrollLeft = scrollLeft - walk;
-        });
-    </script>
 <body>
 
     <header>
-        <div class="logo"><i class="fa-solid fa-trophy" style="color: var(--primary-color);"></i> SportRes</span></div>
+        <div class="logo"><i class="fa-solid fa-trophy" style="color: var(--primary-color);"></i> SportRes</div>
         <ul class="nav-links">
             <li><a href="#">Trang chủ</a></li>
-            <li><a href="#">Tính năng</a></li>
-            <li><a href="#">Bảng giá</a></li>
-            <li><a href="#" class="btn-login"><i class="fa-solid fa-user-shield"></i> Đăng Nhập</a></li>
+            <li><a href="#tinh-nang">Tính năng</a></li>
+            <li><a href="#bang-gia">Bảng giá</a></li>
+            <li><a href="/login" class="btn-login"><i class="fa-solid fa-user-shield"></i> Đăng Nhập</a></li>
         </ul>
     </header>
 
@@ -461,34 +399,15 @@
             <h1>Giải pháp đặt sân và quản lý <span>Toàn Diện</span></h1>
             <p>SportRes giúp kết nối người chơi và chủ sân thể thao chỉ trong vài thao tác chạm. Hỗ trợ người chơi tìm sân, đặt sân và kết nối người chơi với nhau. Hỗ trợ quản lý sân cho chủ sân.</p>
             <div class="hero-buttons">
-                <a href="#" class="btn-main">Trải Nghiệm Ngay</a>
+                <a href="/login" class="btn-main">Trải Nghiệm Ngay</a>
             </div>
         </div>
         <div class="hero-image">
-            <img src="https://images.unsplash.com/photo-1508098682722-e99c43a406b2?fm=jpg&q=60&w=3000" alt="Giao diện SportRes">
+            <img src="image_eef743.png" alt="Giao diện SportRes">
         </div>
     </section>
 
-    <!-- <section class="stats-section">
-        <div class="stat-item">
-            <h2>150,000+</h2>
-            <p>Người chơi tin dùng</p>
-        </div>
-        <div class="stat-item">
-            <h2>1,200+</h2>
-            <p>Sân đấu trên toàn quốc</p>
-        </div>
-        <div class="stat-item">
-            <h2>30 Giây</h2>
-            <p>Thời gian đặt giữ chỗ</p>
-        </div>
-        <div class="stat-section-item">
-            <h2>99.9%</h2>
-            <p>Tỷ lệ lịch chính xác</p>
-        </div>
-    </section> -->
-
-    <section class="section bg-light">
+    <section id="tinh-nang" class="section bg-light">
         <span class="section-tag">Giá trị mang lại</span>
         <h2 class="section-title">Tại sao nên chọn SportRes?</h2>
         
@@ -499,30 +418,27 @@
                 <p>Hệ thống tự động định vị vị trí của bạn để đề xuất các cụm sân bóng đá, cầu lông, tennis có khung giờ trống gần bạn nhất.</p>
             </div>
             <div class="feature-card">
-                <div class="icon-box" style="background: rgba(46, 213, 115, 0.1); color: var(--secondary-color);"><i class="fa-solid fa-credit-card"></i></div>
+                <div class="icon-box"><i class="fa-solid fa-credit-card"></i></div>
                 <h3>Thanh toán linh hoạt</h3>
                 <p>Tích hợp cổng quét mã QR ngân hàng tự động, ví điện tử MoMo, VNPAY. Xác nhận giữ chỗ ngay sau 3 giây quét mã thành công.</p>
             </div>
             <div class="feature-card">
-                <div class="icon-box" style="background: rgba(30, 144, 255, 0.1); color: #1e90ff;"><i class="fa-solid fa-chart-line"></i></div>
+                <div class="icon-box"><i class="fa-solid fa-chart-line"></i></div>
                 <h3>Quản lý doanh thu (Chủ sân)</h3>
                 <p>Biểu đồ báo cáo trực quan giúp chủ sân theo dõi tần suất kín lịch, quản lý nhân sự trực ca, chống trùng lịch tuyệt đối.</p>
             </div>
         </div>
     </section>
 
-    <!-- KHU VỰC BỘ MÔN THỂ THAO -->
-    <section class="section" style="overflow: hidden; padding-right: 0; padding-left: 8%;">
+    <section id="bang-gia" class="section" style="overflow: hidden; padding-right: 0; padding-left: 8%;">
         <div style="text-align: left; margin-bottom: 40px;">
             <span class="section-tag">Đa dạng bộ môn</span>
             <h2 class="section-title" style="margin-bottom: 10px;">Sẵn sàng phục vụ mọi đam mê</h2>
             <p style="color: #747d8c; font-size: 14px;"><i class="fa-solid fa-arrow-left-long"></i> Vuốt hoặc kéo ngang để xem thêm nhiều bộ môn <i class="fa-solid fa-arrow-right-long"></i></p>
         </div>
         
-        <!-- Hộp bọc hỗ trợ kéo ngang -->
         <div class="sports-container">
             <div class="sports-grid">
-                <!-- 1. Bóng đá (Đã sửa link ảnh hiển thị 100%) -->
                 <div class="sport-card">
                     <img src="https://images.pexels.com/photos/39853/football-team-sport-balls-39853.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Bóng đá">
                     <div class="sport-overlay">
@@ -530,7 +446,6 @@
                         <p>Hơn 500 cụm sân cỏ nhân tạo</p>
                     </div>
                 </div>
-                <!-- 2. Cầu lông -->
                 <div class="sport-card">
                     <img src="https://images.unsplash.com/photo-1626224583764-f87db24ac4ea?fm=jpg&q=60&w=800" alt="Cầu lông">
                     <div class="sport-overlay">
@@ -538,7 +453,6 @@
                         <p>Sân thảm chuẩn quốc tế</p>
                     </div>
                 </div>
-                <!-- 3. Pickleball -->
                 <div class="sport-card">
                     <img src="https://images.unsplash.com/photo-1626224583764-f87db24ac4ea?fm=jpg&q=60&w=800" style="filter: hue-rotate(90deg);" alt="Pickleball">
                     <div class="sport-overlay">
@@ -546,7 +460,6 @@
                         <p>Xu hướng thể thao mới nhất</p>
                     </div>
                 </div>
-                <!-- 6. Tennis -->
                 <div class="sport-card">
                     <img src="https://images.unsplash.com/photo-1595435934249-5df7ed86e1c0?fm=jpg&q=60&w=800" alt="Tennis">
                     <div class="sport-overlay">
@@ -554,7 +467,6 @@
                         <p>Hỗ trợ đặt theo tháng/năm</p>
                     </div>
                 </div>
-                <!-- 7. Bóng rổ -->
                 <div class="sport-card">
                     <img src="https://images.unsplash.com/photo-1546519638-68e109498ffc?fm=jpg&q=60&w=800" alt="Bóng rổ">
                     <div class="sport-overlay">
@@ -562,7 +474,6 @@
                         <p>Sân trong nhà & ngoài trời</p>
                     </div>
                 </div>
-                <!-- 4. Bóng chuyền (Đã sửa link ảnh hiển thị 100%) -->
                 <div class="sport-card">
                     <img src="https://images.pexels.com/photos/1263426/pexels-photo-1263426.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Bóng chuyền">
                     <div class="sport-overlay">
@@ -570,7 +481,6 @@
                         <p>Sân tiêu chuẩn thi đấu, độ nảy tốt</p>
                     </div>
                 </div>
-                <!-- 5. Bóng bàn -->
                 <div class="sport-card">
                     <img src="https://images.unsplash.com/photo-1534158914592-062992fbe900?fm=jpg&q=60&w=800" alt="Bóng bàn">
                     <div class="sport-overlay">
@@ -586,5 +496,28 @@
         <p>© 2026 <b>SportRes</b> - Nền tảng số hóa hạ tầng thể thao toàn diện.</p>
     </footer>
 
+    <script>
+        const slider = document.querySelector('.sports-container');
+        let isDown = false;
+        let startX;
+        let scrollLeft;
+
+        slider.addEventListener('mousedown', (e) => {
+            isDown = true;
+            startX = e.pageX - slider.offsetLeft;
+            scrollLeft = slider.scrollLeft;
+        });
+
+        slider.addEventListener('mouseleave', () => { isDown = false; });
+        slider.addEventListener('mouseup', () => { isDown = false; });
+
+        slider.addEventListener('mousemove', (e) => {
+            if(!isDown) return;
+            e.preventDefault();
+            const x = e.pageX - slider.offsetLeft;
+            const walk = (x - startX) * 2;
+            slider.scrollLeft = scrollLeft - walk;
+        });
+    </script>
 </body>
 </html>
