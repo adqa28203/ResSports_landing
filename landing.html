@@ -98,33 +98,21 @@
             min-height: 80vh;
         }
 
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: -20%;
-            right: -10%;
-            width: 600px;
-            height: 600px;
-            background: rgba(255, 71, 87, 0.15);
-            border-radius: 50%;
-            filter: blur(80px);
-        }
-
         .hero-content {
             max-width: 550px;
             z-index: 2;
         }
 
         .hero-badge {
-            background: rgba(255, 71, 87, 0.2);
-            color: #ff6b81;
+            background: rgba(255, 255, 255, 0.2);
+            color: #ffffff;
             padding: 6px 15px;
             border-radius: 50px;
             font-size: 13px;
             font-weight: 700;
             display: inline-block;
             margin-bottom: 20px;
-            border: 1px solid rgba(255, 71, 87, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.3);
         }
 
         .hero h1 {
@@ -132,15 +120,16 @@
             line-height: 1.2;
             margin-bottom: 20px;
             font-weight: 800;
+            color: #ffffff; /* Tiêu đề màu trắng tinh tế */
         }
 
         .hero h1 span {
-            color: var(--primary-color);
+            color: #f1c40f; /* Đổi chữ "Toàn Diện" sang màu vàng rực rỡ để tạo điểm nhấn nhấn mạnh */
         }
 
         .hero p {
             font-size: 16px;
-            color: #a4b0be;
+            color: #e8f8f5; /* Màu chữ mô tả trắng xanh nhẹ, dễ đọc */
             margin-bottom: 35px;
         }
 
@@ -150,36 +139,38 @@
         }
 
         .btn-main {
-            background: linear-gradient(135deg, var(--primary-color), #ff6b81);
-            color: white;
+            background: #ffffff; /* Đổi nút chính sang màu trắng để nổi bật trên nền xanh */
+            color: #27ae60; /* Chữ màu xanh lá đậm */
             padding: 16px 35px;
             text-decoration: none;
             font-size: 16px;
             font-weight: 700;
             border-radius: 50px;
-            box-shadow: 0 8px 25px rgba(255, 71, 87, 0.4);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
             transition: 0.3s;
         }
 
         .btn-main:hover {
             transform: translateY(-3px);
-            box-shadow: 0 12px 30px rgba(255, 71, 87, 0.6);
+            background: #e8f8f5;
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
         }
 
         .btn-sub {
-            background: rgba(255, 255, 255, 0.1);
-            color: white;
+            background: rgba(255, 255, 255, 0.15);
+            color: #ffffff;
             padding: 16px 35px;
             text-decoration: none;
             font-size: 16px;
             font-weight: 700;
             border-radius: 50px;
-            border: 1px solid rgba(255, 255, 255, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.3);
             transition: 0.3s;
         }
 
         .btn-sub:hover {
-            background: rgba(255, 255, 255, 0.2);
+            background: rgba(255, 255, 255, 0.3);
+            color: #ffffff;
         }
 
         .hero-image {
